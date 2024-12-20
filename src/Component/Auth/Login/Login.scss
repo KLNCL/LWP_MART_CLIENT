@@ -1,0 +1,105 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../../Image/Cover.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .heder{
+        display: flex;
+        align-items: center;
+        width: 100vw;
+        height: 30vh;
+        // background-color: gray;
+        font-size: 25px;
+        color: white;
+
+        h1{
+            margin-left: 50px;
+        }
+    }
+
+    .login{
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 70vh;
+        // background-color: orange;
+
+        .gray-box{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(197, 187, 187, 0.468);
+            border: 3px solid #f1f1f1;
+            border-radius: 35px;
+            font-weight: bold;
+            height: 340px;
+            margin-top: 10px;
+
+            .form{
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                width: 500px;
+
+                input {
+                    width: 400px;
+                    height: 40px;
+                    margin: 5px;
+                    padding-left: 5px;
+                    margin-top: 10px;
+                    background-color: white;
+                    border-color: white;
+                }
+                .LogIn-button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 200px;
+                    height: 40px;
+                    margin-bottom: 18px;
+                    margin-top: 28px;
+                    font-weight: bold;
+                    color: rgb(255, 255, 255);
+                    /* color: rgb(230, 228, 228); */
+                    font-size: 20px;
+                    border: 3px solid rgb(255, 255, 255);
+                    background-color: rgba(255, 254, 254, 0.315);
+                    border-radius: 8px;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+                
+            }
+
+            .link{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                /* background-color: blue; */
+
+                p{
+                    margin-top: 2px;
+                    margin-bottom: 5px;
+                    color: rgb(48, 48, 48);
+                                   
+                }
+
+            }
+        }
+
+    }
+   
+
+}

@@ -1,0 +1,80 @@
+.item_add-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.721);
+    
+
+    .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 470px;
+        // height: 490px;
+        background-color: white;
+        border-radius: 20px;
+        margin-top: 80px;
+        flex-direction: column;
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 470px;
+            height: 50px;
+            // background-color: gray;
+
+            p {
+                color: black;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        .body {
+            width: 100%;
+            // height: 400px;
+            // background-color: red;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-auto-flow: row;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 20px;
+
+            
+            .input-filed {
+                width: 200px;
+                gap: 5px;
+
+                input {
+                    width: 100%;
+                    height: 30px;
+                    // background-color: white;
+
+                }
+            }
+        }
+
+        button{
+            width: 150px;
+            height: 40px;
+            background-color: rgb(111, 74, 13);
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            color: white;
+
+            &:hover{
+                background-color:rgba(149, 95, 24, 0.992) ;
+                cursor: pointer;
+            }
+            
+        }
+    }
+}

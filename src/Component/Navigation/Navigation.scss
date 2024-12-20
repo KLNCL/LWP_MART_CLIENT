@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navigation-container {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 11vh;
+    z-index: 2;
+  
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      background: rgba(14, 14, 14, 0.744);
+      box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  
+      .check {
+        display: none;
+      }
+  
+      label {
+        .btn, .cancel {
+          margin-top: 18px;
+          color: white;
+          font-size: 25px;
+          cursor: pointer;
+          display: none;
+        }
+      }
+  
+      .name {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 2%;
+        color: white;
+        
+        h1 {
+          font-size: 40px;
+          margin-left: 20px;
+        }
+      }
+  
+      ul {
+        float: right;
+        margin-right: 25px;
+        display: flex;
+        align-items: center;
+  
+        li {
+          display: inline-block;
+          margin: 0 15px;
+  
+          a {
+            position: relative;
+            color: white;
+            font-size: 15px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+  
+            &:before {
+              position: absolute;
+              content: '';
+              left: 0;
+              bottom: 0;
+              height: 3px;
+              width: 100%;
+              background: white;
+              transform: scaleX(0);
+              transform-origin: right;
+              transition: transform .2s linear;
+            }
+  
+            &:hover:before {
+              transform: scaleX(1);
+              transform-origin: left;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 825px) {
+    .navigation-container {
+      nav {
+        flex-direction: column;
+        align-items: flex-end;
+  
+        .check {
+          &:checked ~ ul {
+            right: 0;
+          }
+  
+          &:checked ~ label .btn {
+            display: none;
+          }
+  
+          &:checked ~ label .cancel {
+            display: block;
+          }
+        }
+  
+        .name {
+          .logo img {
+            height: 35px;
+          }
+        }
+  
+        label {
+          .btn, .cancel {
+            line-height: 0;
+            margin-top: 0;
+            margin-right: 10px;
+          }
+  
+          .btn {
+            display: block;
+          }
+        }
+  
+        ul {
+          position: fixed;
+          width: 40%;
+          height: 100vh;
+          background: rgba(14, 14, 14, 0.744);
+          top: 60px;
+          right: -100%;
+          text-align: center;
+          transition: all 0.5s;
+          margin-right: 0;
+  
+          li {
+            display: block;
+            margin: 50px 0;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+  }
+  
