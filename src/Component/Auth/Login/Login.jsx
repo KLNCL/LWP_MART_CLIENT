@@ -53,7 +53,7 @@ export default function Login() {
                 <div className="gray-box">
                 <div className='form'>
                 <input type='text' name='email' placeholder='Email' required onChange={(e) => setEmail(e.target.value)}/>
-                <input type='text' name='password' placeholder='Password' required onChange={(e) => setPassword(e.target.value)}/>
+                <input type='password' name='password' placeholder='Password' required onChange={(e) => setPassword(e.target.value)}/>
 
                 {success && (
                   <span style={{ color: 'green', display: 'block', marginTop: '10px' }}>
