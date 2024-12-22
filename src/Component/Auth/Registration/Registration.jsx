@@ -31,7 +31,7 @@ export default function Registration() {
       if (res.status === 200) {
         // alert("Registration successful!");
         setSuccess(true);
-        navigate('/');
+        navigate('/login');
       } else {
         // alert("Registration failed. Please try again.");
         setError(true);

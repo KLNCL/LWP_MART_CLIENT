@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Profile.scss"
+import { useNavigate } from "react-router-dom";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { IoIosAdd } from "react-icons/io";
@@ -10,6 +11,19 @@ import BecomeSeller from '../../Component/BecomeSeller/BecomeSeller';
 
 
 export default function Profile() {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      checkLoginStatus();
+    }, []);
+
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem("authToken"); 
+      if (!token) {
+        navigate('/login');
+      }
+    };
 
   const card = [
     {Image:"/Item/card-1.jpg", title:"Wood Furniture"},
@@ -49,6 +63,11 @@ const closeBecomeSellerPopupWindow = () =>{
   setBecomeSellerPopup(false)
 }
 
+const handleLogout = () => {
+  localStorage.removeItem("authToken");
+  navigate("/");
+};
+
 
 
   return (
@@ -81,6 +100,7 @@ const closeBecomeSellerPopupWindow = () =>{
             <button className="seller"  onClick={becomeSellerPopupWindow}>Become a seller</button>
             {/* <button className="seller">Edit</button> */}
             <button className="seller">My Order</button>
+            <button className="logout" onClick={handleLogout}>Log Out</button>
           </div>
         </div>
         <div className="right">

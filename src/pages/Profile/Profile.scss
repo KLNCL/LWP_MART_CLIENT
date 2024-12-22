@@ -109,6 +109,14 @@
                 cursor: pointer;
             }
         }
+
+        .logout {
+
+            &:hover {
+                background-color: rgba(235, 41, 41, 0.992);
+                cursor: pointer;
+            }
+        }
     }
    
 

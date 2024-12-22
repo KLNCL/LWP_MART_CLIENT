@@ -85,6 +85,19 @@
             }
           }
         }
+        
+        button {
+          background-color: rgba(149, 95, 24, 0.992);
+          cursor: pointer;
+          border-radius: 6px;
+          border: none;
+          width: 100px;
+          height: 30px;
+
+          &:hover {
+            background-color: rgba(149, 95, 24, 0.8);
+          }
+        }
       }
     }
   }
