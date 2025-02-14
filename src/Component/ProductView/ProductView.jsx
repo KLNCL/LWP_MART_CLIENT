@@ -25,8 +25,7 @@ export default function ProductView(props) {
                     </div>
                     <div className="right">
                         <div className="product-details">
-                            <h3>Product Name:</h3>
-                            <p>Wood Furniture</p>
+                            <h1><p>Wood Furniture</p></h1>
                         </div>
                         <div className="product-details">
                             <h3>Price:</h3>
@@ -47,13 +46,16 @@ export default function ProductView(props) {
                     </div>
                 </div>
                 <div className="bottom">
-                    <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "5px", marginBottom: "20px" }}>
+                    <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "4px", marginBottom: "20px" }}>
                        <a href='/purchase'>
-                       <button style={{ marginRight: "20px" }}>Oder Now</button>
+                       <button style={{ marginRight: "2px" }}>Oder Now</button>
                        </a>
                     </div>
                     <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "5px", marginBottom: "20px" }}>
-                        <button style={{ marginRight: "20px" }}>Add Cart</button>
+                        <button style={{ marginRight: "2px" }}>Add Cart</button>
+                    </div>
+                    <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "5px", marginBottom: "20px" }}>
+                        <button style={{ marginRight: "2px" }}>message</button>
                     </div>
                 </div>
             </div>
