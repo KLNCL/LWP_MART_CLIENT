@@ -10,7 +10,7 @@ export default function ProductView(props) {
             <div className="card">
                 <div className="top">
                     <div style={{ display: "flex", width: "100%", justifyContent: "flex-end" }}>
-                        <IoMdCloseCircle onClick={() => props.closeProductViewPopupWindow()} size={28} color='red' style={{ paddingRight: "5px", marginTop: "5px", cursor: "pointer" }} />
+                        <IoMdCloseCircle onClick={() => props.closeProductViewPopupWindow()} size={40} color='Brown' style={{ paddingRight: "5px", marginTop: "5px", cursor: "pointer" }} />
                     </div>
                 </div>
                 <div className="body">
