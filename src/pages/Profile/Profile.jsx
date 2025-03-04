@@ -183,7 +183,7 @@ export default function Profile() {
               </button>
             )}
 
-            <button className="seller">Cart</button>
+            {/* <button className="seller">Cart</button> */}
             <button className="logout" onClick={handleLogout}>
               Log Out
             </button>

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./purchase.scss";
 import productImage from "../../Image/card-2.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
-import instance from '../../utils/AxiosInstance';
+import instance from "../../utils/AxiosInstance";
+import { BiCheckCircle } from "react-icons/bi";
 
 export default function Purchase() {
   const location = useLocation();
   const { orderDetails } = location.state || {};
   const navigate = useNavigate();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Redirect if orderDetails is missing
   if (!orderDetails) {
@@ -38,11 +40,12 @@ export default function Purchase() {
       };
 
       // Call the API
-      const response = await instance.post('/createorder', payload);
+      const response = await instance.post("/createorder", payload);
 
       // Handle success
       if (response.status === 200) {
-        alert("Order created successfully!");
+        setIsSubmitted(true);
+        // alert("Order created successfully!");
       } else {
         alert("Failed to create order.");
       }
@@ -53,57 +56,114 @@ export default function Purchase() {
   };
 
   return (
-    <div className="purchase-container">
-      <div className="top">
-        <p>Purchase</p>
-        <hr style={{ width: "85vw", color: "black", marginTop: "173px" }} />
-      </div>
-      <div className="body">
-        <div className="left">
-          <div className="image">
-            <img src={productImage} alt="Product" />
+    <>
+      {!isSubmitted ? (
+        <div className="purchase-container1">
+          <div className="top">
+            <p>Purchase</p>
+            <hr style={{ width: "85vw", color: "black", marginTop: "90px" }} />
+          </div>
+          <div className="body">
+            <div className="left">
+              <div className="image">
+                <img src={productImage} alt="Product" />
+              </div>
+            </div>
+            <div className="right">
+              <div className="input-filed">
+                <span
+                  style={{
+                    marginBottom: "50px",
+                    fontSize: "17px",
+                    color: "black",
+                  }}
+                >
+                  Name:
+                </span>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="input-filed">
+                <span
+                  style={{
+                    marginBottom: "5px",
+                    fontSize: "17px",
+                    color: "black",
+                  }}
+                >
+                  Address:
+                </span>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
+              <div className="input-filed">
+                <span
+                  style={{
+                    marginBottom: "5px",
+                    fontSize: "17px",
+                    color: "black",
+                  }}
+                >
+                  Contact No:
+                </span>
+                <input
+                  type="text"
+                  value={contactNo}
+                  onChange={(e) => setContactNo(e.target.value)}
+                />
+              </div>
+              <div className="input-filed">
+                <span
+                  style={{
+                    marginBottom: "5px",
+                    fontSize: "17px",
+                    color: "black",
+                  }}
+                >
+                  QTY:
+                </span>
+                <input
+                  type="text"
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="bottom">
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "5px",
+                marginBottom: "20px",
+                marginLeft: "500px",
+              }}
+            >
+              <button style={{ marginRight: "20px" }} onClick={handleOrder}>
+                ORDER
+              </button>
+            </div>
           </div>
         </div>
-        <div className="right">
-          <div className='input-filed'>
-            <span style={{ marginBottom: "50px", fontSize: "17px", color: "black" }}>Name:</span>
-            <input
-              type='text'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="input-filed">
-            <span style={{ marginBottom: "5px", fontSize: "17px", color: "black" }}>Address:</span>
-            <input
-              type='text'
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </div>
-          <div className="input-filed">
-            <span style={{ marginBottom: "5px", fontSize: "17px", color: "black" }}>Contact No:</span>
-            <input
-              type='text'
-              value={contactNo}
-              onChange={(e) => setContactNo(e.target.value)}
-            />
-          </div>
-          <div className="input-filed">
-            <span style={{ marginBottom: "5px", fontSize: "17px", color: "black" }}>QTY:</span>
-            <input
-              type='text'
-              value={qty}
-              onChange={(e) => setQty(e.target.value)}
-            />
+      ) : (
+        <div className="complete-the-perches-container">
+          <div className="complete-the-perches">
+            <BiCheckCircle size={50} color="green" />
+            <h1>You have completed the purchase.</h1>
+            <button className="home-button" onClick={() => navigate("/")}>
+              Return to Home
+            </button>
           </div>
         </div>
-      </div>
-      <div className="bottom">
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "5px", marginBottom: "20px", marginLeft: "500px" }}>
-          <button style={{ marginRight: "20px" }} onClick={handleOrder}>ORDER</button>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
