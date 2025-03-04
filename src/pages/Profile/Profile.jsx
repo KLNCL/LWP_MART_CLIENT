@@ -17,6 +17,7 @@ export default function Profile() {
   const [card, setCard] = useState([]); // Initialize as an empty array
   const [trigger, setTrigger] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [selectedEmail, setSelectedEmail] = useState(null)
 
   useEffect(() => {
     checkLoginStatus();
@@ -46,8 +47,6 @@ export default function Profile() {
   const userId = userDetails?._id;
   const role = userDetails?.role;
 
-  console.log("Token data", userDetails);
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -65,7 +64,6 @@ export default function Profile() {
     }
   }, [userId]);
 
-  console.log("user Data", user);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -108,11 +106,13 @@ export default function Profile() {
     setTrigger((prev) => !prev);
   };
 
-  const becomeSellerPopupWindow = () => {
+  const becomeSellerPopupWindow = (email) => {
+    setSelectedEmail(email);
     setBecomeSellerPopup(true);
   };
   const closeBecomeSellerPopupWindow = () => {
     setBecomeSellerPopup(false);
+    setSelectedEmail(null);
   };
 
   const handleLogout = () => {
@@ -135,6 +135,7 @@ export default function Profile() {
       )}
       {becomeSellerPopup && (
         <BecomeSeller
+          selectedEmail={user.email}
           closeBecomeSellerPopupWindow={closeBecomeSellerPopupWindow}
         />
       )}

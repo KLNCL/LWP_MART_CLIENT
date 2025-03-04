@@ -6,7 +6,7 @@ import instance from "../../utils/AxiosInstance";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-export default function BecomeSeller(props) {
+export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmail}) {
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
   const [success, setSuccess] = useState("");
@@ -71,7 +71,7 @@ export default function BecomeSeller(props) {
       console.error("Error updating user:", error);
       setErrors(
         error.response?.data?.message ||
-        "Something went wrong. Please try again."
+          "Something went wrong. Please try again."
       );
     }
   };
@@ -83,7 +83,7 @@ export default function BecomeSeller(props) {
           style={{ display: "flex", width: "100%", justifyContent: "flex-end" }}
         >
           <IoMdCloseCircle
-            onClick={() => props.closeBecomeSellerPopupWindow()}
+            onClick={closeBecomeSellerPopupWindow}
             size={28}
             color="red"
             style={{ paddingRight: "5px", marginTop: "5px", cursor: "pointer" }}
@@ -132,7 +132,7 @@ export default function BecomeSeller(props) {
             <input
               type="text"
               placeholder="Email"
-              value={email}
+              value={selectedEmail}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
