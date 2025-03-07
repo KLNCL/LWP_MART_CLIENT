@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
+  }
+  
+.purchase-container2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 120px;
+    flex-direction: row !important;
+    margin-top: 120px !important;
+
+  }
+  
+  .card-fram {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .card-fram h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .inputField {
+    margin-bottom: 1.5rem;
+  }
+  
+  .inputField label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .inputField input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+  }
+  
+  .confirm-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #f0c14b;
+    border: none;
+    border-radius: 0.25rem;
+    color: #111;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .confirm-button:hover {
+    background-color: #e0b13b;
+  }
+  
+  /* Right side styles */
+  .right-side {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .order-summary h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .customer-info {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .customer-info p {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .products-list h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .product-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .product-name {
+    font-weight: 500;
+  }
+  
+  .product-quantity {
+    font-size: 0.875rem;
+    color: #777;
+    margin-top: 0.25rem;
+  }
+  
+  .product-price {
+    font-weight: 600;
+  }
+  
+  .total-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+  }
+  
+  /* Completion screen styles */
+  .complete-the-perches-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .complete-the-perches {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 3rem 2rem;
+    max-width: 500px;
+  }
+  
+  .complete-the-perches h1 {
+    margin: 1rem 0 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .home-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .home-button:hover {
+    background-color: #444;
+  }
+  
+  /* Media queries for responsive design */
+  @media (min-width: 768px) {
+
+  
+    .purchase-container {
+      flex-direction: row;
+    }
+  
+    .card-fram,
+    .right-side {
+      flex: 1;
+    }
+  }
+  
+  

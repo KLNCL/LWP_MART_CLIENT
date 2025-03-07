@@ -1,27 +1,74 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './order.scss';
-import productImage from "../../Image/card-2.jpg";
+import { jwtDecode } from "jwt-decode";
+import instance from "../../utils/AxiosInstance";
 
 export default function Order() {
   const [toggleStates, setToggleStates] = useState({});
+  const [card, setCard] = useState('');
+  const [productData, setProductData] = useState("");
+  const [productId, setProductId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  const cardDetails = [
-    { id: '0001', name: 'Wood mask', qty: 2, price: 10000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana', contactNo: "071-5632987", image: productImage },
-    { id: '0002', name: 'Stone sculpture', qty: 1, price: 15000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana',contactNo: "071-5632987",  image: productImage },
-    { id: '0003', name: 'Stone sculpture', qty: 1, price: 15000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana',contactNo: "071-5632987",  image: productImage },
-    { id: '0004', name: 'Stone sculpture', qty: 1, price: 15000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana',contactNo: "071-5632987",  image: productImage },
-    { id: '0005', name: 'Stone sculpture', qty: 1, price: 15000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana',contactNo: "071-5632987",  image: productImage },
-    { id: '0006', name: 'Stone sculpture', qty: 1, price: 15000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana',contactNo: "071-5632987",  image: productImage },
-    { id: '0007', name: 'Stone sculpture', qty: 1, price: 15000.0, customerName:'Imeshika Madhubashini', address:'No 52, Dambulla Rd, Habarana',contactNo: "071-5632987",  image: productImage },
-  ];
+    // Get user ID from the token
+    const getUserDetailsFromToken = () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) return null;
 
+      try {
+        return jwtDecode(token);
+      } catch (error) {
+        console.error("Invalid token", error);
+        return null;
+      }
+    };
 
-  const handleToggle = (cardId) => {
+    const userDetails = getUserDetailsFromToken();
+    const seller_id = userDetails?._id;
+
+  useEffect(() => {
+    const getOrder = async () => {
+      try {
+        const res = await instance.get(`/orders/${seller_id}`);
+        if (res.data) {
+          setCard(res.data);
+        }
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+    getOrder();
+  }, [seller_id]);
+
+  useEffect(() => {
+    if (card && card.length > 0) {
+      setProductId(card[0].product_id);
+    }
+  }, [card]);
+
+  useEffect(() => {
+
+    const getProduct = async () => {
+      try {
+        const res = await instance.get(`/products/${productId}`);
+        if (res.data) {
+          setProductData(res.data);
+        }
+      } catch (err) {
+        console.error("Error fetching product data:", err);
+      }
+    };
+
+    getProduct();
+  },[productId]);
+
+  const handleToggle = (index) => {
     setToggleStates((prevState) => ({
       ...prevState,
-      [cardId]: !prevState[cardId],
+      [index]: !prevState[index],
     }));
   };
+
 
   return (
     <div className="order-container">
@@ -64,7 +111,7 @@ export default function Order() {
           <div className="contactNo" style={{ height: '50px', width:"200px" }}>
             <p>Contact No</p>
           </div>
-          
+
           <div className="see-more" style={{ height: '50px', width:"85px" }}></div>
         </div>
 
@@ -77,9 +124,9 @@ export default function Order() {
             flexDirection: 'column',
           }}
         >
-          {cardDetails.map((card) => (
+          {card && card.map((card, index) => (
             <div
-              key={card.id}
+              key={card.index}
               className="detail-card"
               style={{
                 display: 'flex',
@@ -89,7 +136,7 @@ export default function Order() {
               }}
             >
               <div className="id" style={{width:"100px" }}>
-                <p>{card.id}</p>
+                <p>{index + 1}</p>
               </div>
               <div className="image">
                 <img
@@ -103,29 +150,29 @@ export default function Order() {
                 />
               </div>
               <div className="item-name" style={{width:"190px"}}>
-                <p>{card.name}</p>
+                <p>{productData.productName}</p>
               </div>
               <div className="qty" style={{width:"100px"}}>
-                <p>{card.qty}</p>
+                <p>{card.orderqty}</p>
               </div>
               <div className="price">
-                <p>{card.price.toFixed(2)}</p>
+                <p>{card.orderqty && productData.price ? (card.orderqty * productData.price).toFixed(2) : "Loading..."}</p>
               </div>
               <div className="cous-name" style={{width:"250px"}}>
-                <p>{card.customerName}</p>
+                <p>{card.buyerName}</p>
               </div>
               <div className="address" style={{width:"300px"}}>
                 <p>{card.address}</p>
               </div>
               <div className="contactNo" style={{width:"200px"}}>
-                <p>{card.contactNo}</p>
+                <p>{card.contact}</p>
               </div>
               <div className="see-more" style={{ flexDirection: 'column', alignItems: 'center', width:"85px" }}>
                 <label className="toggle-switch">
                   <input
                     type="checkbox"
-                    checked={!!toggleStates[card.id]}
-                    onChange={() => handleToggle(card.id)}
+                    checked={!!toggleStates[index]}
+                    onChange={() => handleToggle(index)}
                   />
                   <span className="slider"></span>
                 </label>
