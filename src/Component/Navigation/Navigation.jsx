@@ -61,7 +61,7 @@ export default function Navigation() {
             <a href="#Message">Message</a>
           </li>
           <li>
-            <a href="#Contact Us">Contact Us</a>
+            <a href="ContactUs">Contact Us</a>
           </li>
           <li>
             <a href="/aboutUs">About</a>
