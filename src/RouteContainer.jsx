@@ -43,6 +43,7 @@ import Order from './pages/Order/Order';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Cart from './pages/Cart/Cart';
 import QuntityPurches from './pages/QuantityPurches/QuantityPurches';
+import ContactUs from './pages/ContactUs/ContactUs';
 
 export default function RoutContainer() {
   return (
@@ -69,6 +70,8 @@ export default function RoutContainer() {
           <Route path='aboutUs' element={<AboutUs/>} />
           <Route path='cart' element={<Cart/>} />
           <Route path='cart/purchase' element={<QuntityPurches/>} />
+          <Route path='ContactUs' element={<ContactUs/>} />
+
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,98 @@
+.contactUs-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    // height: 100vh;
+    align-items: center;
+    // justify-content: center;
+   background-color: white;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .title{
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        width: 100vw;
+        height: 25vh;
+        // background-color: blanchedalmond;
+
+        p{
+            font-size: 35px;
+            font-weight: bold;
+            margin-top: 120px;
+            margin-left: 30px;
+        }
+    }
+
+    .body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 1500px;
+        // height: 75vh;
+        // margin-top: 20px;
+        // margin-bottom: 20px;
+        // background-color: rgb(148, 104, 39);
+
+        .img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1000px;
+            // height: 55vh;
+            // background-color: aquamarine;
+            padding: 10px;
+
+            .left{
+                display: flex;
+                // align-items: center;
+                // justify-content: center;
+                flex-direction: column;
+                width: 350px;
+                // height: 55vh;
+                background-color: rgba(228, 228, 228, 0.707);
+                padding: 30px;
+
+                
+                .mobile-number,
+                .whatsapp-number,
+                .email{
+                    padding: 20px;
+                }
+            }
+
+            .right{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 650px;
+                height: 380px;
+                // background-color: rgb(233, 145, 145);
+
+                img{
+                    // width: auto;
+                    width: 650px;
+                    height: 380px;
+                    object-fit: cover;
+                    // height: auto;
+                }
+               
+            }
+        }
+
+        // .form{
+        //     display: flex;
+        //     // align-items: center;
+        //     // justify-content: center;
+        //     flex-direction: column;
+        //     width: 100vw;
+        //     height: 50vh;
+        //     background-color: pink;
+        // }
+    }
+
+    
+}
