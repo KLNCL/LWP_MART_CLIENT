@@ -72,7 +72,7 @@ export default function Home() {
                 className="card" 
                 onClick={() => productViewPopupWindow(item._id)}
               >
-                <img src={item.Image} alt={item.productName} />
+                <img src={`http://localhost:5000/api/image/${item.image}`} alt={item.productName} />
                 <p>{item.productName}</p>
               </div>
             ))

@@ -211,7 +211,7 @@ export default function Profile() {
                   className="card"
                   onClick={() => itemEdditPopupWindow(item._id, userId)}
                 >
-                  <img src={item.Image} alt={item.title} />
+                  <img src={`http://localhost:5000/api/image/${item.image}`} alt={item.title} />
                   <p>{item.productName}</p>
                 </div>
               ))

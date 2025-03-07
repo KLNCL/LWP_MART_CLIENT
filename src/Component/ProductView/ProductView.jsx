@@ -142,7 +142,7 @@ export default function ProductView({ productId, closeProductViewPopupWindow }) 
         <div className="body">
           <div className="left">
             <div className="image">
-              <img src={productImage} />
+              <img src={`http://localhost:5000/api/image/${productData.image}`} />
             </div>
             <div className="seller-detail">
               <img src={profileImage} />

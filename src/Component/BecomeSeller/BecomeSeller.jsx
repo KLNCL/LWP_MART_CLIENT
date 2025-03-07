@@ -38,7 +38,7 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
     e.preventDefault();
 
     // Basic validation
-    if (!fullName || !address || !contactNo || !email || !discription) {
+    if (!fullName || !address || !contactNo || !discription) {
       setErrors("Please fill in all fields.");
       return;
     }
@@ -48,7 +48,6 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
       fullName,
       address,
       contactNo,
-      email,
       discription,
       image: "gsdgsdy",
       role: "seller", // Update the user's role to "seller"
@@ -70,8 +69,7 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
     } catch (error) {
       console.error("Error updating user:", error);
       setErrors(
-        error.response?.data?.message ||
-          "Something went wrong. Please try again."
+        error.response?.data?.message
       );
     }
   };
