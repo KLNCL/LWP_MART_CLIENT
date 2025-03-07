@@ -11,6 +11,7 @@ export default function ItemAdd(props) {
   const [qty, setQty] = useState("");
   const [price, setPrice] = useState("");
   const [discription, setDiscription] = useState("");
+  const [image, setImage] = useState("");
 
   // Get user ID from the token
   const getUserDetailsFromToken = () => {
@@ -45,7 +46,7 @@ export default function ItemAdd(props) {
       qty,
       price,
       discription,
-      image:'dfd',
+      image: "20",
     };
 
     console.log(payload);
@@ -106,7 +107,9 @@ export default function ItemAdd(props) {
           </div>
           <div className="input-filed">
             <span>Add Image:</span>
-            <input type="file" />
+            <input type="file" 
+            // onChange={(e) => setImage(e.target.value[0])}
+            />
           </div>
           <div className="input-filed">
             <span>Description:</span>

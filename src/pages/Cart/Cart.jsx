@@ -129,7 +129,7 @@ export default function Cart() {
               cart.map((item) => (
                 <div className="cart-item" key={item._id}>
                   <div className="item-image">
-                    <img src={item.image2 || "/placeholder.svg"} alt={item.productName2} />
+                    <img src={`http://localhost:5000/api/image/${item.image2}`} alt={item.productName2} />
                   </div>
                   <div className="item-details">
                     <h2>{item.productName2}</h2>
