@@ -11,7 +11,7 @@ export default function ItemAdd(props) {
   const [qty, setQty] = useState("");
   const [price, setPrice] = useState("");
   const [discription, setDiscription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
 
   // Get user ID from the token
   const getUserDetailsFromToken = () => {
@@ -34,34 +34,36 @@ export default function ItemAdd(props) {
     e.preventDefault();
 
     // Basic validation
-    if (!productName || !qty || !price || !discription) {
+    if (!productName || !qty || !price || !discription || !image) {
       setErrors("Please fill in all fields.");
       return;
     }
 
-    // Prepare the payload
-    const payload = {
-      user_id,
-      productName,
-      qty,
-      price,
-      discription,
-      image: "20",
-    };
+    // Prepare FormData to handle file uploads
+    const formData = new FormData();
+    formData.append("user_id", user_id);
+    formData.append("productName", productName);
+    formData.append("qty", qty);
+    formData.append("price", price);
+    formData.append("discription", discription);
+    formData.append("image", image); // Send file with FormData
 
-    console.log(payload);
-    
+    console.log(formData);
 
     try {
-      // Send the request to update the user
-      const response = await instance.post("/createproduct", payload);
+      // Send the request to create the product
+      const response = await instance.post("/createproduct", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (response.status === 200) {
         setSuccess("Product Added Successfully!");
         setErrors("");
         props.colseItemAddPopupWindow();
       } else {
-        setErrors("Failed to adding product");
+        setErrors("Failed to add product");
       }
     } catch (error) {
       console.error("Error adding product:", error);
@@ -107,8 +109,9 @@ export default function ItemAdd(props) {
           </div>
           <div className="input-filed">
             <span>Add Image:</span>
-            <input type="file" 
-            // onChange={(e) => setImage(e.target.value[0])}
+            <input
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])} // ✅ Correctly handle file input
             />
           </div>
           <div className="input-filed">

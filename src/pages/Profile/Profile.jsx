@@ -147,7 +147,7 @@ export default function Profile() {
           <div className="seller-details">
             <div className="name">{user.fullName}</div>
             <div className="username">@{user.userName}</div>
-            <div className="description">{user.discription}</div>
+            <div className="description">{user.description}</div>
             <div className="contac-detail">
               <p
                 style={{ color: "blue", fontWeight: "bold", fontSize: "17px" }}
