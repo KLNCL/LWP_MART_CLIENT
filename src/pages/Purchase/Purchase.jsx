@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./purchase.scss";
 import productImage from "../../Image/card-2.jpg";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,6 +10,19 @@ export default function Purchase() {
   const { orderDetails } = location.state || {};
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+
+      useEffect(() => {
+        checkLoginStatus();
+      }, []);
+    
+      const checkLoginStatus = () => {
+        const token = localStorage.getItem("authToken");
+        if (!token) {
+          navigate("/login");
+        }
+      };
+
 
   // Redirect if orderDetails is missing
   if (!orderDetails) {
@@ -66,7 +79,7 @@ export default function Purchase() {
           <div className="body">
             <div className="left">
               <div className="image">
-                <img src={productImage} alt="Product" />
+                <img src={`http://localhost:5000/api/image/${orderDetails.image}`} alt="Product" />
               </div>
             </div>
             <div className="right">

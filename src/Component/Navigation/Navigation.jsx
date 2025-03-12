@@ -43,7 +43,7 @@ export default function Navigation() {
   };
 
   return (
-    <div className="navigation-container">
+    <div className="navigation-container ">
       <nav>
         <input type="checkbox" id="check" className="check" />
         <label htmlFor="check">
@@ -58,10 +58,10 @@ export default function Navigation() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="#Message">Message</a>
+            <a href="/message">Message</a>
           </li>
           <li>
-            <a href="ContactUs">Contact Us</a>
+            <a href="/ContactUs">Contact Us</a>
           </li>
           <li>
             <a href="/aboutUs">About</a>

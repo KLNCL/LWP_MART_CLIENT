@@ -67,6 +67,10 @@ button:focus-visible {
   }
 } */
 
+@tailwind utilities;
+
+
+
 ::-webkit-scrollbar-thumb {
   background:rgb(71 122 234);
 }
@@ -75,3 +79,5 @@ button:focus-visible {
   width: 4px;
   border-radius: 10px;
 }
+
+@import "tailwindcss";

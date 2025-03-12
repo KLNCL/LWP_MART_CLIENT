@@ -11,6 +11,18 @@ export default function Cart() {
   const [quantities, setQuantities] = useState({})
   const navigate = useNavigate()
 
+  
+    useEffect(() => {
+      checkLoginStatus();
+    }, []);
+  
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        navigate("/login");
+      }
+    };
+
   const getUserDetailsFromToken = () => {
     const token = localStorage.getItem("authToken")
     if (!token) return null

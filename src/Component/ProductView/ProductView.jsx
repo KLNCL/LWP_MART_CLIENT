@@ -4,7 +4,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import productImage from "../../Image/card-2.jpg";
 import profileImage from "../../Image/Profile.jpg";
 import instance from "../../utils/AxiosInstance";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 export default function ProductView({ productId, closeProductViewPopupWindow }) {
@@ -84,6 +84,12 @@ export default function ProductView({ productId, closeProductViewPopupWindow }) 
   
 
   const handleCart = async () => {
+
+    const token = localStorage.getItem("authToken");
+      if (!token) {
+        navigate("/login");
+      }
+
     try {
       // Prepare the payload
       const payload = {
@@ -103,7 +109,7 @@ export default function ProductView({ productId, closeProductViewPopupWindow }) 
       }
     } catch (error) {
       console.error("Error product adding to cart:", error);
-      alert("An error occurred while product adding to cart.");
+      // alert("An error occurred while product adding to cart.");
     }
   };
 
@@ -146,7 +152,7 @@ export default function ProductView({ productId, closeProductViewPopupWindow }) 
             </div>
             <div className="seller-detail">
               <img src={profileImage} />
-              <p>{user.fullName}</p>
+             <p>{user.fullName}</p>
             </div>
           </div>
           <div className="right">
