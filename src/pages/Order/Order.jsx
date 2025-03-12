@@ -69,6 +69,7 @@ export default function Order() {
     }));
   };
 
+console.log(card);
 
   return (
     <div className="order-container">
@@ -140,7 +141,7 @@ export default function Order() {
               </div>
               <div className="image">
                 <img
-                  src={card.image}
+                  src={`http://localhost:5000/api/image/${card.image}`}
                   alt={card.name}
                   style={{
                     width: '100px',

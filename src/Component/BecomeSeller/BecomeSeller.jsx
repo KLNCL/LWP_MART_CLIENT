@@ -14,7 +14,7 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
   const [address, setAddress] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [email, setEmail] = useState("");
-  const [discription, setDiscription] = useState("");
+  const [description, setDescription] = useState("");
 
   // Get user ID from the token
   const getUserDetailsFromToken = () => {
@@ -38,7 +38,7 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
     e.preventDefault();
 
     // Basic validation
-    if (!fullName || !address || !contactNo || !discription) {
+    if (!fullName || !address || !contactNo || !description) {
       setErrors("Please fill in all fields.");
       return;
     }
@@ -48,7 +48,7 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
       fullName,
       address,
       contactNo,
-      discription,
+      description,
       image: "gsdgsdy",
       role: "seller", // Update the user's role to "seller"
     };
@@ -60,7 +60,7 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
       if (response.status === 200) {
         setSuccess("You are now a seller!");
         setErrors("");
-        props.closeBecomeSellerPopupWindow();
+        closeBecomeSellerPopupWindow();
         localStorage.removeItem("authToken");
         navigate("/login"); // Redirect to the profile page
       } else {
@@ -144,8 +144,8 @@ export default function BecomeSeller({closeBecomeSellerPopupWindow, selectedEmai
               }}
               rows={4}
               placeholder="Description"
-              value={discription}
-              onChange={(e) => setDiscription(e.target.value)}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
         </div>
